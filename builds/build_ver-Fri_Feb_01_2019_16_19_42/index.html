@@ -1,0 +1,664 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ThePrimeThanatos</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta content="telephone=no" name="format-detection">
+        <!-- This make sence for mobile browsers. It means, that content has been optimized for mobile browsers -->
+        <meta name="HandheldFriendly" content="true">
+
+
+        <!--[if (gt IE 9)|!(IE)]><!-->
+        <link href="static/css/main.css" rel="stylesheet" type="text/css">
+        <!--<![endif]-->
+
+
+        <meta property="og:title" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="500" />
+        <meta property="og:image:height" content="300" />
+        <meta property="twitter:description" content="" />
+        <link rel="image_src" href="" />
+
+        <link rel="apple-touch-icon" sizes="57x57" href="static/img/general/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="static/img/general/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="static/img/general/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="static/img/general/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="static/img/general/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="static/img/general/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="static/img/general/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="static/img/general/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="static/img/general/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="static/img/general/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="static/img/general/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="static/img/general/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="static/img/general/favicon/favicon-16x16.png">
+        <link rel="manifest" href="static/img/general/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="static/img/general/favicon/ms-icon-144x144.png">
+        <script>
+            (function (H) { H.className = H.className.replace(/\bno-js\b/, 'js') })(document.documentElement)
+        </script>
+
+        <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+    </head>
+
+    <body class="page" style="visibility: hidden; opacity: 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" style="border: 0 !important; clip: rect(0 0 0 0) !important; height: 1px !important; margin: -1px !important; overflow: hidden !important; padding: 0 !important; position: absolute !important; width: 1px !important;"
+        class="root-svg-symbols-element">
+            <symbol id="add" viewBox="0 0 19.62 19.625">
+                <path id="Forma_1_&#x43A;&#x43E;&#x43F;&#x438;&#x44F;_2" data-name="Forma 1 &#x43A;&#x43E;&#x43F;&#x438;&#x44F; 2" class="cls-1" d="M1207.32,515.7v-2.4h-8.62v-8.617h-2.4V513.3h-8.62v2.4h8.62v8.617h2.4V515.7h8.62Z" transform="translate(-1187.69 -504.688)"
+                />
+            </symbol>
+            <symbol id="back" viewBox="0 0 10 16">
+                <path fill-rule="evenodd" d="M10.004,13.726 L7.806,15.994 L2.207,10.257 L2.199,10.266 L0.002,7.997 L2.199,5.728 L2.208,5.737 L7.806,-0.001 L10.004,2.268 L4.413,7.997 L10.004,13.726 Z" />
+            </symbol>
+            <symbol id="calendar" viewBox="0 0 488.152 488.152">
+                <path d="M177.854 269.311c0-6.115-4.96-11.069-11.08-11.069h-38.665c-6.113 0-11.074 4.954-11.074 11.069v38.66c0 6.123 4.961 11.079 11.074 11.079h38.665c6.12 0 11.08-4.956 11.08-11.079v-38.66zM274.483 269.311c0-6.115-4.961-11.069-11.069-11.069h-38.67c-6.113 0-11.074 4.954-11.074 11.069v38.66c0 6.123 4.961 11.079 11.074 11.079h38.67c6.108 0 11.069-4.956 11.069-11.079v-38.66zM371.117 269.311c0-6.115-4.961-11.069-11.074-11.069h-38.665c-6.12 0-11.08 4.954-11.08 11.069v38.66c0 6.123 4.96 11.079 11.08 11.079h38.665c6.113 0 11.074-4.956 11.074-11.079v-38.66zM177.854 365.95c0-6.125-4.96-11.075-11.08-11.075h-38.665c-6.113 0-11.074 4.95-11.074 11.075v38.653c0 6.119 4.961 11.074 11.074 11.074h38.665c6.12 0 11.08-4.956 11.08-11.074V365.95zM274.483 365.95c0-6.125-4.961-11.075-11.069-11.075h-38.67c-6.113 0-11.074 4.95-11.074 11.075v38.653c0 6.119 4.961 11.074 11.074 11.074h38.67c6.108 0 11.069-4.956 11.069-11.074V365.95zM371.117 365.95c0-6.125-4.961-11.075-11.069-11.075h-38.67c-6.12 0-11.08 4.95-11.08 11.075v38.653c0 6.119 4.96 11.074 11.08 11.074h38.67c6.108 0 11.069-4.956 11.069-11.074V365.95z"
+                />
+                <path d="M440.254 54.354v59.05c0 26.69-21.652 48.198-48.338 48.198h-30.493c-26.688 0-48.627-21.508-48.627-48.198V54.142h-137.44v59.262c0 26.69-21.938 48.198-48.622 48.198H96.235c-26.685 0-48.336-21.508-48.336-48.198v-59.05c-23.323.703-42.488 20.002-42.488 43.723v346.061c0 24.167 19.588 44.015 43.755 44.015h389.82c24.131 0 43.755-19.889 43.755-44.015V98.077c0-23.721-19.164-43.02-42.487-43.723zm-14.163 368.234c0 10.444-8.468 18.917-18.916 18.917H80.144c-10.448 0-18.916-8.473-18.916-18.917V243.835c0-10.448 8.467-18.921 18.916-18.921h327.03c10.448 0 18.916 8.473 18.916 18.921l.001 178.753z"
+                />
+                <path d="M96.128 129.945h30.162c9.155 0 16.578-7.412 16.578-16.567V16.573C142.868 7.417 135.445 0 126.29 0H96.128C86.972 0 79.55 7.417 79.55 16.573v96.805c0 9.155 7.422 16.567 16.578 16.567zM361.035 129.945h30.162c9.149 0 16.572-7.412 16.572-16.567V16.573C407.77 7.417 400.347 0 391.197 0h-30.162c-9.154 0-16.577 7.417-16.577 16.573v96.805c0 9.155 7.423 16.567 16.577 16.567z"
+                />
+            </symbol>
+            <symbol id="close" viewBox="0 0 26 26">
+                <path id="Forma_1" data-name="Forma 1" class="cls-1" d="M1386,213.6l-2.6-2.6L1373,221.4,1362.6,211l-2.6,2.6,10.4,10.4L1360,234.4l2.6,2.6,10.4-10.4,10.4,10.4,2.6-2.6L1375.6,224Z" transform="translate(-1360 -211)" />
+            </symbol>
+            <symbol id="del" viewBox="0 0 21 21">
+                <path fill-rule="evenodd" d="M16.646,2.847 L0.354,2.847 C0.159,2.847 0.000,2.688 0.000,2.491 C0.000,2.295 0.159,2.136 0.354,2.136 L4.619,2.136 C4.658,1.691 4.795,0.940 5.261,0.459 C5.557,0.154 5.931,-0.000 6.375,-0.000 L9.916,-0.000 C10.360,-0.000 10.734,0.154 11.030,0.459 C11.497,0.940 11.633,1.691 11.672,2.136 L16.646,2.136 C16.841,2.136 17.000,2.295 17.000,2.491 C17.000,2.688 16.841,2.847 16.646,2.847 ZM10.521,0.954 C10.363,0.791 10.165,0.712 9.916,0.712 L6.375,0.712 C6.127,0.712 5.929,0.791 5.770,0.954 C5.485,1.247 5.371,1.763 5.331,2.136 L10.960,2.136 C10.921,1.763 10.806,1.247 10.521,0.954 ZM15.244,19.235 C15.232,19.841 14.852,21.000 13.506,21.000 L3.493,21.000 C2.148,21.000 1.768,19.841 1.755,19.228 L1.106,3.559 L15.894,3.559 L15.244,19.235 ZM12.750,14.949 L4.250,14.949 C4.054,14.949 3.896,15.108 3.896,15.305 C3.896,15.502 4.054,15.661 4.250,15.661 L12.750,15.661 C12.945,15.661 13.104,15.502 13.104,15.305 C13.104,15.108 12.945,14.949 12.750,14.949 ZM12.750,16.729 L4.250,16.729 C4.054,16.729 3.896,16.888 3.896,17.085 C3.896,17.282 4.054,17.441 4.250,17.441 L12.750,17.441 C12.945,17.441 13.104,17.282 13.104,17.085 C13.104,16.888 12.945,16.729 12.750,16.729 ZM12.750,18.508 L4.250,18.508 C4.054,18.508 3.896,18.668 3.896,18.864 C3.896,19.061 4.054,19.220 4.250,19.220 L12.750,19.220 C12.945,19.220 13.104,19.061 13.104,18.864 C13.104,18.668 12.945,18.508 12.750,18.508 Z"
+                />
+            </symbol>
+            <symbol id="download" viewBox="0 0 21 21">
+                <path fill-rule="evenodd" d="M19.154,21.000 L1.846,21.000 C0.828,21.000 -0.000,20.172 -0.000,19.154 L-0.000,13.002 C-0.000,12.662 0.275,12.387 0.615,12.387 L3.076,12.387 C3.416,12.387 3.691,12.662 3.691,13.002 L3.691,17.309 L17.309,17.309 L17.309,13.002 C17.309,12.662 17.584,12.387 17.924,12.387 L20.385,12.387 C20.725,12.387 21.000,12.662 21.000,13.002 L21.000,19.154 C21.000,20.172 20.172,21.000 19.154,21.000 ZM11.013,15.857 C10.768,16.152 10.314,16.152 10.068,15.857 L3.834,8.474 C3.499,8.073 3.787,7.465 4.307,7.465 L7.383,7.465 L7.383,0.615 C7.383,0.275 7.658,-0.000 7.998,-0.000 L13.002,-0.000 C13.342,-0.000 13.617,0.275 13.617,0.615 L13.617,7.465 L16.693,7.465 C17.213,7.465 17.500,8.073 17.165,8.474 L11.013,15.857 Z"
+                />
+            </symbol>
+            <symbol id="edit" viewBox="0 0 18 18">
+                <path fill-rule="evenodd" d="M11.193,3.979 L14.854,7.664 L5.586,16.994 L1.926,13.308 L11.193,3.979 ZM17.633,3.090 L16.000,1.446 C15.369,0.811 14.344,0.811 13.711,1.446 L12.147,3.021 L15.808,6.706 L17.633,4.870 C18.122,4.377 18.122,3.582 17.633,3.090 ZM0.010,18.489 C-0.056,18.790 0.214,19.061 0.514,18.988 L4.594,17.992 L0.935,14.306 L0.010,18.489 Z"
+                />
+            </symbol>
+            <symbol id="exit" viewBox="0 0 16 16">
+                <path id="Forma_1" data-name="Forma 1" class="cls-1" d="M51.973,931.667h-5.98A0.666,0.666,0,0,1,45.329,931V919a0.666,0.666,0,0,1,.664-0.667h5.98a0.667,0.667,0,0,0,0-1.333h-5.98A2,2,0,0,0,44,919v12a2,2,0,0,0,1.993,2h5.98A0.667,0.667,0,0,0,51.973,931.667Zm7.829-7.142-4.04-4a0.666,0.666,0,0,0-.933.95l2.887,2.858H49.98a0.667,0.667,0,0,0,0,1.334h7.736l-2.887,2.858a0.667,0.667,0,0,0,.466,1.142,0.66,0.66,0,0,0,.466-0.192l4.04-4A0.669,0.669,0,0,0,59.8,924.525Z"
+                transform="translate(-44 -917)" />
+            </symbol>
+            <symbol id="left" viewBox="0 0 10 16">
+                <path id="Rectangle_18_copy_6_&#x43A;&#x43E;&#x43F;&#x438;&#x44F;" data-name="Rectangle 18 copy 6 &#x43A;&#x43E;&#x43F;&#x438;&#x44F;" d="M1765.81,753l-7.81,8,2.2,2.269,7.8-8Zm-5.61,5.729L1758,761l7.81,8,2.19-2.268Z" transform="translate(-1758 -753)"
+                fill="#fff" fill-rule="evenodd" />
+            </symbol>
+            <symbol id="menu" viewBox="0 0 512 512">
+                <path d="M491.318 235.318H20.682C9.26 235.318 0 244.577 0 256s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 78.439H20.682C9.26 78.439 0 87.699 0 99.121c0 11.422 9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.26 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 392.197H20.682C9.26 392.197 0 401.456 0 412.879s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682s-9.259-20.682-20.682-20.682z"
+                />
+            </symbol>
+            <symbol id="ok" viewBox="0 0 17.837 17.837">
+                <path d="M16.145 2.571a.7.7 0 0 0-.99 0L6.92 10.804l-4.241-4.27a.698.698 0 0 0-.989 0L.204 8.019a.703.703 0 0 0 0 .99l6.217 6.258a.704.704 0 0 0 .99 0L17.63 5.047a.7.7 0 0 0 0-.994l-1.485-1.482z" />
+            </symbol>
+            <symbol id="right" viewBox="0 0 10 16">
+                <path id="Rectangle_18_copy_6" data-name="Rectangle 18 copy 6" d="M1818.19,753l7.81,8-2.2,2.269-7.8-8Zm5.61,5.729L1826,761l-7.81,8-2.19-2.268Z" transform="translate(-1816 -753)" fill="#fff" fill-rule="evenodd" />
+            </symbol>
+            <symbol id="search" viewBox="0 0 56.966 56.966">
+                <path d="M55.146 51.887L41.588 37.786A22.926 22.926 0 0 0 46.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 0 0 .083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z"
+                />
+            </symbol>
+        </svg>
+
+        <div class="center-center">
+            <a href="admin/main.html" class="m-button-1">
+
+            админ
+
+        </a>
+            <a href="klient/main.html" class="m-button-1">
+
+            клиент
+
+        </a>
+        </div>
+
+        <div class="overlay "></div>
+
+        <div class="popup popup-delete-user">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Удаление пользователя
+                        </div>
+                        <div class="popup__top-desc">
+                            Это действие нельзя будет отменить
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="popup__desc  popup__block white">
+
+
+                            <p>
+                                Директор <span>Александр Клубничкин</span> будет удалён.
+                            </p>
+
+                            <p>Назначте в место него нового директора</p>
+
+                            <select name="" class="nice-select" id="">
+                                <option value="1">щербакова александра</option>
+                                <option value="2" selected>Александр Клубничкин</option>
+                                <option value="3">Петр Антонов</option>
+                            </select>
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Удалить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup popup-delete-vote">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Удалить голосование
+                        </div>
+                        <div class="popup__top-desc">
+                            Это действие нельзя будет отменить
+                        </div>
+                    </div>
+                    <div class="popup__desc  popup__block white">
+                        <p>Вы действительно хотите удалить это голосование</p>
+                    </div>
+                    <div class="popup__delete-button  popup__block">
+                        <form action="">
+                            <button class="m-button">
+                                Удалить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup popup-loan">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Оформить займ
+                        </div>
+                    </div>
+
+                    <form action="#" class="form-loan">
+                        <div class="popup__desc  popup__block white">
+                            <div class="loan-form">
+                                <input type="text" placeholder="Сумма займа, тенге" name="numberLoan" class="m-field">
+                                <div class="radio">
+                                    <label class="radio__item">
+                                        <input type="checkbox" name="radio-group-1" checked>
+                                        <div class="radio__psevdo">
+                                            есть поручитель
+                                        </div>
+                                    </label>
+
+                                    <label class="radio__item">
+                                        <input type="checkbox" name="radio-group-1">
+                                        <div class="radio__psevdo">
+                                            Есть недвижимость в собственности
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Оформить
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup popup-accept">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Выдать квартиру
+                        </div>
+                        <div class="popup__top-desc">
+                            Это действие нельзя будет отменить
+                        </div>
+                    </div>
+                    <div class="popup__desc  popup__block white mb0">
+                        <p>
+                            вы действителььно хотите выдать квартиру
+                        </p>
+                    </div>
+                    <div class="form-edit__bottom">
+                        <a href="#" class="form-edit__bottom-button form-edit__bottom-delete">
+
+                        отменить
+
+                    </a>
+                        <a href="#" class="form-edit__bottom-button form-edit__bottom-save">
+
+                        выдать
+
+                    </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup popup-add-user">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Принять пользователя
+                        </div>
+                    </div>
+                    <div class="popup__desc  popup__block white">
+
+                        <p>Вы действительно хотите принять этого пользователя?</p>
+
+                    </div>
+                    <div class="popup__delete-button  popup__block">
+                        <a href="#" class="m-button">
+
+                        принять
+
+                    </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup add-payment">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Добавить платеж
+                        </div>
+                    </div>
+                    <form action="#">
+                        <div class="popup__desc  popup__block white">
+                            <div class="add-payment__content">
+                                <input type="text" name="srok" class="m-field" placeholder="Сумма платежа">
+                                <div class='input-group date' id='datepicker'>
+                                    <input type='text' class="form-control m-field" placeholder="Дата и время">
+                                    <span class="input-group-addon m-button">
+
+                                    <span class="glyphicon glyphicon-calendar">
+
+                                        
+                <svg class="icon__calendar" width="488.152px" height="488.152px">
+                    <use xlink:href="#calendar"></use>
+                </svg>
+            
+
+                                    </span>
+                                    </span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Добавить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup edit-payment">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Редактировать платеж
+                        </div>
+                    </div>
+                    <form action="#">
+                        <div class="popup__desc  popup__block white">
+                            <div class="add-payment__content">
+                                <input type="text" name="srok" class="m-field" placeholder="Сумма платежа">
+                                <div class='input-group date' id='datepicker'>
+                                    <input type='text' class="form-control m-field" placeholder="Дата и время">
+                                    <span class="input-group-addon m-button">
+
+                                    <span class="glyphicon glyphicon-calendar">
+
+                                        
+                <svg class="icon__calendar" width="488.152px" height="488.152px">
+                    <use xlink:href="#calendar"></use>
+                </svg>
+            
+
+                                    </span>
+                                    </span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup delete-payment">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Удалить платеж
+                        </div>
+                    </div>
+                    <form action="#">
+                        <div class="popup__desc  popup__block white">
+
+                            <p>Вы действительно зотите удалить этот платеж?</p>
+
+
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Удалить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="popup add-programm">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Добавление программы
+                        </div>
+                    </div>
+                    <form action="#" class="add-programm-form">
+                        <div class="popup__desc  popup__block white">
+
+                            <div class="popup__programm-name">
+                                <input type="text" placeholder="название программы" name='nameVote' class="m-field">
+                            </div>
+
+                            <div class="popup__field-block">
+                                <div class="m-title-3">Первоначальный взнос</div>
+                                <input type="text" placeholder="введите число" name='first' class="m-field">
+                            </div>
+
+                            <div class="popup__field-block">
+                                <div class="m-title-3">Целевой взнос</div>
+                                <input type="text" placeholder="введите число" name='target' class="m-field">
+                            </div>
+
+                            <div class="popup__field-block">
+                                <div class="m-title-3">Срок</div>
+                                <input type="text" placeholder="введите число" name='term' class="m-field">
+                            </div>
+
+                            <div class="popup__field-block">
+                                <div class="m-title-3">Вступительный взнос</div>
+                                <input type="text" placeholder="введите число" name='opening' class="m-field">
+                            </div>
+
+                            <div class="popup__field-block">
+                                <div class="m-title-3">
+                                    Тип счёта
+                                </div>
+
+                                <select name="" class="nice-select" id="">
+                                    <option value="1" selected>накопительный</option>
+                                    <option value="2">Аннуитетный</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="popup__delete-button  popup__block">
+                            <button class="m-button">
+                                Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="popup popup-delete-doc">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Удаление документа
+                        </div>
+                        <div class="popup__top-desc">
+                            Это действие нельзя будет отменить
+                        </div>
+                    </div>
+                    <div class="popup__desc  popup__block white">
+
+
+                        <p>
+                            Вы действительно хотите удалить документ
+                            <span>Правила кооператива?</span>
+                        </p>
+
+                    </div>
+                    <div class="popup__delete-button  popup__block">
+                        <form action="">
+                            <button class="m-button">
+                                Удалить
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="popup popup-edit">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+
+                    <form action="/" class="form-edit">
+
+                        <div class="form-edit__content">
+                            <input type="text" name="text" class="m-field" placeholder="заголовок документа">
+
+                            <label for="textarea" class="field-label">содержимое документа</label>
+                            <textarea name="editor1" name="textarea" id="editor2" rows="10" cols="80">
+
+                                <p>Потребительские Кооперативы, предлагающие в рассрочку недвижимость – реальное веяние нашего времени. Но, как и все новое, кооперативы воспринимаются народом неоднозначно: одни относятся насторожено, другие – с иронией о
+                                    невозможности существования «без обмана». Однако сейчас все больше людей верят в их надежность и вступая, становятся счастливыми обладателями заветных квадратных метров.</p>
+                                <p>Потребительский Кооператив «ВЕСТА ГЛОБАЛ» начал свою все большедеятельность 27 марта 2017 года в г.Павлодар и несмотря на относительно небольшой период времени нам есть чем гордиться. Ежедневно количество пайщиков увеличивается
+                                    и выкупленных.</p>
+                                <p>Потребительский Кооператив «ВЕСТА ГЛОБАЛ» начал свою все большедеятельность 27 марта 2017 года в г.Павлодар и несмотря на относительно небольшой период времени нам есть чем гордиться. Ежедневно количество пайщиков увеличивается
+                                    и выкупленных.</p>
+                                <p>Потребительский Кооператив «ВЕСТА ГЛОБАЛ» начал свою все большедеятельность 27 марта 2017 года в г.Павлодар и несмотря на относительно небольшой период времени нам есть чем гордиться. Ежедневно количество пайщиков увеличивается
+                                    и выкупленных.</p>
+
+                            </textarea>
+
+                            <script>
+                                CKEDITOR.replace( 'editor2' );
+                            </script>
+                        </div>
+
+                        <div class="form-edit__bottom">
+                            <a href="#" class="form-edit__bottom-button form-edit__bottom-delete">
+
+                            Отменить
+
+                        </a>
+                            <button class="form-edit__bottom-button form-edit__bottom-save">
+                                Сохранить
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="popup popup-add-doc">
+            <div class="popup__container">
+                <div class="popup-content">
+                    <div class="popup__close popupClose">
+
+                        <svg class="icon__close" width="26px" height="26px">
+                            <use xlink:href="#close"></use>
+                        </svg>
+
+                    </div>
+                    <div class="popup__top popup__block">
+                        <div class="popup__top-title">
+                            Добавить документ
+                        </div>
+                    </div>
+                    <form action="/" class="form-edit">
+
+                        <div class="form-edit__content">
+                            <input type="text" name="text" class="m-field" placeholder="заголовок документа">
+
+                            <label for="textarea" class="field-label">содержимое документа</label>
+                            <textarea name="editor1" name="textarea" id="editor1" rows="10" cols="80">
+
+                            </textarea>
+
+                            <script>
+                                CKEDITOR.replace( 'editor1' );
+                            </script>
+                        </div>
+
+                        <div class="form-edit__bottom">
+                            <a href="#" class="form-edit__bottom-button form-edit__bottom-delete">
+
+                                <svg class="icon__del" width="21px" height="21px">
+                                    <use xlink:href="#del"></use>
+                                </svg>
+
+                                Удалить
+                            </a>
+                            <a href="#" class="form-edit__bottom-button form-edit__bottom-save">
+
+                            Сохранить
+
+                        </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main scripts. You can replace it, but I recommend you to leave it here     -->
+        <!-- <script src="	" type="text/javascript"></script> -->
+        <script src="static/js/main.js"></script>
+    </body>
+
+</html>
