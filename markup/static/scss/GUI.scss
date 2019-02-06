@@ -2,11 +2,10 @@
 // For example, styles of the links, buttons and so on.
 
 .m-title {
+    font-family: "prox";
+    line-height: normal;
     font-size: 36px;
-    font-weight: bold;
-    color: #1f2942;
-    font-family: 'ral';
-    margin-bottom: 35px;
+    color: #4A4A4A;
 }
 .m-desc {
     font-size: 16px;
@@ -28,6 +27,8 @@
     font-size: 12px;
     text-transform: uppercase;
     cursor: pointer;
+    width: 200px;
+    height: 60px;
     &-angle {
         min-width: 135px;       
         display: flex;
@@ -36,6 +37,7 @@
         border-bottom-left-radius: 0;
     }
 }
+
 .m-field {
     border-radius: 100px;
     border: none;
@@ -48,7 +50,6 @@
     font-size: 14px;
     max-width: 440px;
     width: 100%;
-    border: 2px solid white;
     transition: 0.3s;
     border: 2px solid white;
     @media screen and (max-width: 600px) {
@@ -63,7 +64,6 @@
     }
     &-angle {
         @extend .m-field;
-
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }

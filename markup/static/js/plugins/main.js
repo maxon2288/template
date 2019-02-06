@@ -1,8 +1,9 @@
 
 $(document).ready(function () {
+	$("body").css({'visibility': "visible", "opacity": "1"});
 	popup ();
-
-	forms();
+	M.AutoInit();
+	// forms();
 
 	var swiper = new Swiper('.slider', {
 		spaceBetween: 10,
@@ -13,12 +14,10 @@ $(document).ready(function () {
 	});
 
 
-	$( ".tabs" ).tabs();
-
 	$(document).ready(function() {
 		$('select').niceSelect();
 	});
-	
+
 	$('.form').each(function() {
         var it = $(this);
          it.validate({
@@ -40,8 +39,26 @@ $(document).ready(function () {
 					}
 				});
 			},  
-         
          });
 	 });
+
+	 $(document).on('click', '.number-input-container .number-increment', function(e) {
+        let $input = $(this).siblings('.number-input'),
+            val = parseInt($input.val()),
+            max = parseInt($input.attr('max')),
+            step = parseInt($input.attr('step'));
+		let temp = val + step;
+		$input.val(temp <= max ? temp : max);
+		$(".number-result").text($input.val());
+    });
+    $(document).on('click', '.number-input-container .number-decrement', function(e) {
+        let $input = $(this).siblings('.number-input'),
+            val = parseInt($input.val()),
+            min = parseInt($input.attr('min')),
+            step = parseInt($input.attr('step'));
+		let temp = val - step;
+		$input.val(temp >= min ? temp : min);
+		$(".number-result").text($input.val());
+    });
 	 
 })

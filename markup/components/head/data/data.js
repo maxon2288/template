@@ -1,6 +1,6 @@
 head: {
     defaults: {
-        title: 'ThePrimeThanatos',
+        title: 'default title',
         useSocialMetaTags: true
     }
 }
