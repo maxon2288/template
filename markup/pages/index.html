@@ -6,39 +6,13 @@
 <body class="page" style="visibility: hidden;opacity: 0;">
     %=symbols=%
 
-    <form>
-        <fieldset class="starability-basic">
-        <legend>Basic star rating:</legend>
-        
-        <input type="radio" id="rate5" name="rating" value="5" />
-        <label for="rate5" title="Amazing">5 stars</label>
-        
-        <input type="radio" id="rate4" name="rating" value="4" />
-        <label for="rate4" title="Very good">4 stars</label>
-        
-        <input type="radio" id="rate3" name="rating" value="3" />
-        <label for="rate3" title="Average">3 stars</label>
-        
-        <input type="radio" id="rate2" name="rating" value="2" />
-        <label for="rate2" title="Not good">2 stars</label>
-        
-        <input type="radio" id="rate1" name="rating" value="1" />
-        <label for="rate1" title="Terrible">1 star</label>
-        </fieldset>
-    </form>
+    {{> header/header}}
+
     
-    <div class="number-input-container">
-        <button type="button" class="number-input-button number-decrement">
-            -
-        </button>
-        <div class="number-result">0</div>
-        <input type="number" class="number-input" step="1" value="0" min="0" max="10">
-        <button type="button" class="number-input-button number-increment">
-            +
-        </button>
-    </div>  
-    {{> popup/popup}}
-    {{> scripts/scripts}}
+
+
+    {{> footer/footer}}
+    
     
 </body>
 </html>
