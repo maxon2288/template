@@ -1,0 +1,539 @@
+$(document).ready(function () {
+
+    /**
+     * Загружать аватар при выборе
+     */
+    $(document).on('change', '.upload_avatar', function(){
+        if (this.files && this.files[0]) {
+            sendAvatar(this.files[0], this);
+        }
+    });
+    function sendAvatar(file, el) {
+        var form_data = new FormData();
+        form_data.append('file', file);
+        $.ajax({
+            data: form_data,
+            type: "POST",
+            url: uploadAvatarUrl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response.url) {
+                    $(el).closest('.profile__box').find('img').attr('src', response.url);
+                    // TODO Айбек. Fix div background image.
+                    $(el).closest('.profile__box').find(".profile__logo").css('background-image', "url(" + response.url + ")");
+                } else {
+                    alert("Файл не должен превышать 1 МБ.");
+                }
+            },
+            error: function(response) {
+                response.responseJSON.errors.file.forEach(function(elem){
+                    $.notify.defaults({ className: "error" });
+                    $.notify(elem);
+                });
+            }
+        });
+    }
+
+    /**
+     * Удалить аватар
+     */
+    $(document).on('click', '.remove_avatar', function(){
+        var el = this;
+        var form_data = new FormData();
+        form_data.append('_method', 'DELETE');
+        $.ajax({
+            data: form_data,
+            type: "POST",
+            url: removeAvatarUrl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(responce) {
+                if (responce.url) {
+                    $(el).closest('.profile__box').find('img').attr('src', responce.url);
+                }
+            }
+        });
+    });
+
+    /**
+     * Редирект при выборе
+     */
+    $('body').on('change', '.redirect_on_change', function() {
+        console.log(1111);
+        window.location = $(this).val();
+    });
+
+    /**
+     * Выбор аякс области
+     */
+    $('body').on('change', '.ajax_region', function () {
+        showCityOrVillage();
+    });
+
+    /**
+     * На загрузку страницы
+     */
+    if ($('.ajax_region').val()) {
+        showCityOrVillage();
+        if ($('.ajax_city_or_village').data('value')) {
+            $('.ajax_city_or_village').val($('.ajax_city_or_village').data('value'));
+            $('.ajax_city_or_village').niceSelect('update');
+            switch ($('.ajax_city_or_village').val()) {
+                case 'city':
+                    loadCities($('.ajax_region').val());
+                    break;
+                case 'village':
+                    loadAreas($('.ajax_region').val());
+                    break;
+            }
+        }
+    }
+
+    /**
+     * На выбор аякс "город или село"
+     */
+    $('body').on('change', '.ajax_city_or_village', function () {
+        if ($('.ajax_city_or_village').val()) {
+           switch ($('.ajax_city_or_village').val()) {
+               case 'city':
+                   loadCities($('.ajax_region').val());
+                   break;
+               case 'village':
+                   loadAreas($('.ajax_region').val());
+                   break;
+           }
+        }
+    });
+
+    /**
+     * На выбор аякс района
+     */
+    $('body').on('change', '.ajax_area', function () {
+        loadVillages($('.ajax_area').val());
+    });
+
+    /**
+     * Показать выбор город или село
+     */
+    function showCityOrVillage() {
+        $('.ajax_city_or_village').closest('.city_block').hide();
+        $('.ajax_city_or_village option:selected').prop('selected', false);
+        $('.ajax_city').closest('.city_block').hide();
+        $('.ajax_city option:selected').prop('selected', false);
+        $('.ajax_area').closest('.city_block').hide();
+        $('.ajax_area option:selected').prop('selected', false);
+        $('.ajax_village').closest('.city_block').hide();
+        $('.ajax_village option:selected').prop('selected', false);
+        if ($('.ajax_region').val()) {
+            $('.ajax_city_or_village').closest('.city_block').show();
+            $('.ajax_city_or_village').niceSelect('update');
+        }
+    }
+
+    /**
+     * Загрузка городов
+     */
+    function loadCities(region_id) {
+        $('.ajax_city').closest('.city_block').hide();
+        $('.ajax_city option:selected').prop('selected', false);
+        $('.ajax_area').closest('.city_block').hide();
+        $('.ajax_area option:selected').prop('selected', false);
+        $('.ajax_village').closest('.city_block').hide();
+        $('.ajax_village option:selected').prop('selected', false);
+        $('.ajax_city option').each(function () {
+            if ($(this).attr('value')) {
+                $(this).remove();
+            }
+        });
+        $('.ajax_city').niceSelect('update');
+        $('.ajax_city').closest('.city_block').show();
+        $.get(getCitiesUrl + '?region_id=' + region_id, function (result) {
+            $.each(result, function(key, value) {
+                $('.ajax_city').append('<option value="'+key+'">'+value+'</option>')
+            });
+            if ($('.ajax_city').data('id')) {
+                $('.ajax_city').val($('.ajax_city').data('id'));
+                $('.ajax_city').data('id', 0);
+            }
+            $('.ajax_city').niceSelect('update');
+        });
+    }
+
+    /**
+     * Загрузка районов
+     */
+    function loadAreas(region_id) {
+        $('.ajax_city').closest('.city_block').hide();
+        $('.ajax_city option:selected').prop('selected', false);
+        $('.ajax_area').closest('.city_block').hide();
+        $('.ajax_area option:selected').prop('selected', false);
+        $('.ajax_village').closest('.city_block').hide();
+        $('.ajax_village option:selected').prop('selected', false);
+        $('.ajax_area option').each(function () {
+            if ($(this).attr('value')) {
+                $(this).remove();
+            }
+        });
+        $('.ajax_area').niceSelect('update');
+        $('.ajax_area').closest('.city_block').show();
+        $.get(getAreasUrl + '?region_id=' + region_id, function (result) {
+            $.each(result, function(key, value) {
+                $('.ajax_area').append('<option value="'+key+'">'+value+'</option>')
+            });
+            if ($('.ajax_area').data('id')) {
+                $('.ajax_area').val($('.ajax_area').data('id'));
+                $('.ajax_area').data('id', 0);
+            }
+            $('.ajax_area').niceSelect('update');
+            if ($('.ajax_area').val()) {
+                $('.ajax_village').closest('.city_block').show();
+                loadVillages($('.ajax_area').val());
+            }
+        });
+    }
+
+    /**
+     * Загрузка сел
+     */
+    function loadVillages(area_id) {
+        $('.ajax_village').closest('.city_block').hide();
+        $('.ajax_village option:selected').prop('selected', false);
+        if ($('.ajax_area').val()) {
+            $('.ajax_village option').each(function () {
+                if ($(this).attr('value')) {
+                    $(this).remove();
+                }
+            });
+            $('.ajax_village').niceSelect('update');
+            $('.ajax_village').closest('.city_block').show();
+            $.get(getVillagesUrl + '?area_id=' + area_id, function (result) {
+                $.each(result, function(key, value) {
+                    $('.ajax_village').append('<option value="'+key+'">'+value+'</option>')
+                });
+                if ($('.ajax_village').data('id')) {
+                    $('.ajax_village').val($('.ajax_village').data('id'));
+                    $('.ajax_village').data('id', 0);
+                }
+                $('.ajax_village').niceSelect('update');
+            });
+        }
+    }
+
+    /**
+     * Вступление в проект
+     */
+    $('body').on('click', '.invite_project', function () {
+        $(this).closest('.event__footer').hide();
+        $('.cancel_project').closest('.event__footer').show();
+        $.post(inviteUrl, function (result) { });
+    });
+
+    /**
+     * Отменить вступление
+     */
+    $('body').on('click', '.cancel_project', function () {
+        $(this).closest('.event__footer').hide();
+        $('.invite_project').closest('.event__footer').show();
+        $.post(cancelUrl, function (result) { });
+    });
+
+    /**
+     * Выйти из проекта
+     */
+    $('body').on('click', '.escape_project', function () {
+        $(this).closest('.event__footer').hide();
+        $('.invite_project').closest('.event__footer').show();
+        $.post(escapeUrl, function (result) { });
+    });
+
+    /**
+     * Вступление в проект
+     */
+    $('body').on('click', '.invite_organization', function () {
+        $(this).closest('.profile__logos').hide();
+        $('.cancel_organization').closest('.profile__logos').show();
+        $.post(inviteUrl, function (result) { });
+    });
+
+    /**
+     * Отменить вступление
+     */
+    $('body').on('click', '.cancel_organization', function () {
+        $(this).closest('.profile__logos').hide();
+        $('.invite_organization').closest('.profile__logos').show();
+        $.post(cancelUrl, function (result) { });
+    });
+
+    /**
+     * Выйти из проекта
+     */
+    $('body').on('click', '.escape_organization', function () {
+        $(this).closest('.profile__logos').hide();
+        $('.invite_organization').closest('.profile__logos').show();
+        $.post(escapeUrl, function (result) { });
+    });
+
+    /**
+     * Выйти из проекта
+     */
+    $('body').on('click', '.escape_from_project', function (event) {
+        event.preventDefault();
+        $(this).closest('.cabinet__it').remove();
+        $.post($(this).attr('href'), function (result) { });
+    });
+
+    /**
+     * Показать попап
+     */
+    $("*[data-modal]").click(function() {
+        $('#'+$(this).data('modal')).addClass('active');
+        $('.overlay').addClass('active');
+    });
+
+    /**
+     * Закрыть попап
+     */
+    $('.modal__close,.overlay__bg').click(function(){
+        $('.modal').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+
+    /**
+     * Звездочки
+     */
+    $('.star').click(function(){
+        var index = +$(this).index()+1;
+        $('.star').removeClass('active');
+        $('.star').each(function(){
+            if($(this).index()+1 <= index){
+                $(this).addClass('active')
+            }
+        })
+    });
+
+    /**
+     * Добавить направление
+     */
+    $('.add-direction').on('click', function (event) {
+        event.preventDefault();
+        var element = $('.clone-direction')[$(this).index('.add-direction')];
+        $(element).clone().find('select').removeAttr('form').closest('.clone-direction').removeClass('clone-direction').removeAttr('style').insertBefore(element);
+    });
+
+    /**
+     * Удалить направление
+     */
+    $(document).on('click', '.remove-direction', function(event) {
+        event.preventDefault();
+        var element = $(this).closest('.block-direction');
+        element.remove();
+    });
+
+    /**
+     * Удалить элемент портфолио
+     */
+    $(document).on('click', '.portx__delete', function (event) {
+        event.preventDefault();
+        var element = $(this).closest('.portx__box');
+        element.remove();
+    });
+
+    /**
+     * Загрузка работы портфолио
+     */
+    $("#add_image").checkFileType({
+        allowedExtensions: ["jpg", "jpeg", "png", "svg", "gif"],
+        success: function() {
+            readURL($("#add_image")[0]);
+        },
+        error: function() {
+            alert("Неверный тип файла");
+        }
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".portx__add").before(
+                    '<div class="portx__box"><input type="hidden" class="new_image" name="portfolio[][src]" form="fake" value="' +
+                    '"><div class="portx__delete"><svg class="icon__delete" width="510px" height="510px"><use xlink:href="#delete"></use></svg></div><img src="' +
+                    e.target.result +
+                    '" alt=""></div>'
+                );
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+            var width = $(input).data('width');
+            var height = $(input).data('height');
+            sendImage(input.files[0], input, width, height);
+        }
+        function sendImage(file, el, width, height) {
+            var form_data = new FormData();
+            form_data.append('file', file);
+            form_data.append('width', width);
+            form_data.append('height', height);
+            $.ajax({
+                data: form_data,
+                type: "POST",
+                url: uploadImageUrl,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(responce) {
+                    if (responce.url) {
+                        $('.new_image:last').val(responce.url).removeAttr('form');
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * Подписка
+     */
+    $('.subscribe_form').on('submit', function(event) {
+        event.preventDefault();
+        var it = $(this);
+        var form_data = new FormData(it[0]);
+        $.ajax({
+            data: form_data,
+            type: "POST",
+            url: subscribeUrl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(responce) {
+                if (responce.success) {
+                    $('.show_after').show();
+                    $('.hide_after').hide();
+                }
+            }
+        });
+    });
+
+    /**
+     * Типы анкет
+     */
+    $('.survey_type').on('change', function() {
+       $('form').hide();
+       $('form.type_'+$(this).val()).show();
+    });
+
+    /**
+     * Чекбоксы
+     */
+    $('input[type="checkbox"]').on('change', function() {
+        $('*[data-checkbox="'+$(this).attr('name')+'"]').hide();
+        $('*[data-checkbox="'+$(this).attr('name')+'"][data-checked="'+$(this).prop('checked')+'"]').show();
+    });
+
+    /*
+    * Открывает все внешние ссылки в новой вкладке
+    */
+    $('a[href^="http"], a[href^="ftp"]').not('a[href^="'+window.location.origin+'"]').each(function(){
+        $(this).attr('target', '_blank').attr('rel', 'noref nofollow');
+    });
+
+
+    /**
+     * Поиск по участникам
+     */
+    $('.search_members .search__input').keyup(function () {
+        var name = $(this).val().toLowerCase();
+        var similar = 0;
+        $('.modal__member').removeClass('modal__member_hide');
+        $('.modal__empty').removeClass('modal__empty_active');
+        if (name) {
+            $('.modal__member').each(function () {
+                $(this).addClass('modal__member_hide');
+                var memberName = $(this).find('.modal__name').text().toLowerCase();
+                if (memberName.indexOf(name) !== -1) {
+                    $(this).removeClass('modal__member_hide');
+                    similar++;
+                }
+            });
+            if (!similar) {
+                $('.modal__empty').addClass('modal__empty_active');
+            }
+        }
+    });
+    $('.search_members').on('submit', function (event) {
+        event.preventDefault();
+    });
+
+    /**
+     * TODO Айбек.
+     * Форма подтверждения удаления профиля
+     */
+    $('.confirm-delete-user').on('click', function (event) {
+        event.preventDefault();
+        var elem = $(this);
+
+        $.confirm({
+            title: deleteProfileTitle,
+            content: deleteProfileContent,
+            backgroundDismiss: true,
+            buttons: {
+                confirm: {
+                    text: deleteProfileTitle,
+                    btnClass: 'btn-red',
+                    action: function () {
+                        $('#form-delete-user').submit();
+                    }
+                },
+                deleteProfileBack: {
+                    text: deleteProfileBack,
+                    action: function () {},
+                }
+            }
+        });
+    });
+
+    /**
+     * Загрузка изображения
+     */
+    $("#load_image").checkFileType({
+        allowedExtensions: ["jpg", "jpeg", "png", "svg", "gif"],
+        success: function() {
+            setURL($("#load_image")[0]);
+        },
+        error: function() {
+            alert("Неверный тип файла");
+        }
+    });
+
+    function setURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(input.files[0]);
+            var width = $(input).data('width');
+            var height = $(input).data('height');
+            sendImage(input.files[0], input, width, height);
+        }
+        function sendImage(file, el, width, height) {
+            var form_data = new FormData();
+            form_data.append('file', file);
+            form_data.append('width', width);
+            form_data.append('height', height);
+            $.ajax({
+                data: form_data,
+                type: "POST",
+                url: uploadImageUrl,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(responce) {
+                    if (responce.url) {
+                        $('#url_image').val(responce.url);
+                    }
+                }
+            });
+        }
+    }
+});
